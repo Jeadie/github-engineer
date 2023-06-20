@@ -1,4 +1,4 @@
-name: 'Github Engineer'
+name: 'GH Engineer'
 description: 'A GPT programmer for your Github repo'
 inputs:
   github-token:
