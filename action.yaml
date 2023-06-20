@@ -1,0 +1,20 @@
+name: 'Github Engineer'
+description: 'A GPT programmer for your Github repo'
+inputs:
+  github-token:
+    description: 'Token for interacting with the Github repository (that it runs in)'
+    required: true
+  openai-api-token:
+    description: 'Open AI API token'
+    required: true
+  event:
+    description: 'Payload of the GitHub event that triggered the workflow'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.event }}
+  env: 
+    OPENAI_API_KEY: ${{ inputs.openai-api-token }}
+    GITHUB_TOKEN: ${{ inputs.github-token }}
