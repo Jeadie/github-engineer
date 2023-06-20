@@ -1,0 +1,24 @@
+name: Manual trigger for Github Engineer against mainline (i.e. before release)
+
+on: 
+  workflow_dispatch:
+    inputs:
+      manualEvent:
+        description: 'Manual event data for the Github Engineer' 
+        required: false 
+
+jobs:
+  manual:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run your Github Engineer
+      uses: Jeadie/github-engineer@HEAD
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        openai-api-token: ${{ secrets.OPENAPI_TOKEN }}
+        event: ${{ github.event.inputs.manualEvent || toJson(github.event) }}
+
