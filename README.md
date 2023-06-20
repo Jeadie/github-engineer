@@ -8,13 +8,14 @@ A GPT programmer for your Github repo, right in your Github Actions.
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run Autonomous Agent
-      uses: your-org/autonomous-agent-action@v1
+    - name: Run your Github Engineer
+      uses: Jeadie/github-engineer@v0.0.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         openai-api-token: ${{ secrets.OPENAPI_TOKEN }}
         event: ${{ toJson(github.event) }}
     ```
+
 2. Let your agent:
    1. Review PRs
    2. Write missing unit tests
